@@ -1,0 +1,14 @@
+/* .DeviceSelect > div {
+  cursor: pointer;
+  margin: 8px 0;
+  opacity: 0.5;
+}
+
+.DeviceSelect > div:hover {
+  opacity: 0.8;
+}
+
+.DeviceSelect > .selected {
+  font-weight: bold;
+  opacity: 1;
+} */

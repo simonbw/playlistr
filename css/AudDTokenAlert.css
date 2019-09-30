@@ -1,0 +1,39 @@
+.AudDTokenAlert {
+  padding: 10px;
+  color: #fff;
+  background: #333;
+  /* box-shadow: 1px 1px 5px #03a5, 0px 0px 8px #9007 inset; */
+  /* margin: 10px; */
+  /* border-radius: 4px; */
+  /* font-size: 0.9em; */
+}
+
+.AudDTokenAlert code {
+  font-size: 1.2em;
+}
+
+.AudDTokenAlert .InputLine {
+  display: flex;
+}
+
+.AudDTokenAlert input {
+  /* background: transparent;
+  flex-grow: 1;
+  border: none;
+  border-bottom: 2px solid red;
+  color: white;
+  display: block;
+  font-family: monospace;
+  font-size: 1em;
+  padding: 5px;
+  width: 100%; */
+}
+
+.AudDTokenAlert button {
+  margin-left: 10px;
+}
+
+/* .AudDTokenAlert input:focus {
+  border-bottom: 2px solid white;
+  outline: none;
+} */

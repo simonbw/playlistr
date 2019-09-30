@@ -1,0 +1,80 @@
+.Song {
+  align-items: center;
+  animation-duration: 0.3s;
+  animation-name: animate-in;
+  background: #fff;
+  border-radius: 4px;
+  /* box-shadow: 1px 1px 5px #03a5; */
+  /* color: #034; */
+  display: flex;
+  margin-bottom: 8px;
+  /* opacity: 0.9; */
+  overflow: hidden;
+  padding: 10px;
+  transition: opacity 0.2s ease;
+}
+
+@keyframes animate-in {
+  from {
+    height: 0px;
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.Song:hover {
+  /* opacity: 1; */
+}
+
+.Song .StartedAt {
+  letter-spacing: -1px;
+  font-weight: lighter;
+  padding-right: 8px;
+}
+
+.Song .Title {
+  /* font-family: "Source Sans Pro", sans-serif; */
+  display: block;
+  /* font-weight: bold; */
+}
+
+.Song .ArtistAndAlbum {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #457;
+}
+
+.LoadingSpinner {
+  margin: auto;
+  display: inline-block;
+  animation-name: spin;
+  animation-duration: 1600ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.LoadingSpinner.clickable {
+  opacity: 0.7;
+  cursor: pointer;
+  animation-duration: 20000ms;
+  transform: opacity 0.1s ease;
+}
+
+.LoadingSpinner.clickable:hover {
+  opacity: 0.9;
+}
+
+.LoadingSpinner.clickable:active {
+  opacity: 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

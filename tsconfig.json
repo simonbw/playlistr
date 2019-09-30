@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "noEmit": true,
+    "lib": ["es2018", "dom"],
+    "esModuleInterop": true
+  }
+}

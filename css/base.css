@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  background-image: linear-gradient(#0bf, #06f);
+  /* margin: 0 aD */
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-image: linear-gradient(to right, #fff9, #ffff, #fff9);
+  margin: 15px 0;
+}

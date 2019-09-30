@@ -1,0 +1,8 @@
+.Ellipsis span {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.Ellipsis span.active {
+  opacity: 1;
+}

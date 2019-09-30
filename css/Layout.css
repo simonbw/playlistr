@@ -1,0 +1,109 @@
+main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 50px auto;
+}
+
+.MainContainer {
+  flex-grow: 1;
+  border-radius: 4px;
+  color: #fff;
+  padding-right: 10px;
+}
+
+.PlaylistActions {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.PlaylistActions > * {
+  flex-grow: 1;
+}
+
+.IdentifyContainer {
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.InputContainer {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #03a9;
+  color: #334;
+  flex-grow: 0;
+  opacity: 1;
+  padding: 10px;
+}
+
+.InputContainerBox {
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s ease;
+  width: 100%;
+}
+
+.OpenCloseButton {
+  position: relative;
+}
+
+.OpenCloseButton svg {
+  transition: all 0.5s ease;
+}
+
+.OpenCloseButton .InputIcon {
+  position: absolute;
+}
+.OpenCloseButton.open .InputIcon {
+  opacity: 0;
+  left: 0;
+}
+
+.OpenCloseButton:not(.open) .CloseIcon {
+  opacity: 0;
+}
+
+/* Small screens */
+@media not all and (min-width: 680px) {
+  .InputContainerBox {
+    order: -1;
+    max-height: 0;
+  }
+  .InputContainerBox.open {
+    max-height: 250px;
+  }
+
+  .OpenCloseButton {
+    order: -1;
+    margin-left: 0 !important;
+    width: 100%;
+  }
+  .OpenCloseButton svg {
+    transform: rotate(90deg);
+  }
+  .OpenCloseButton.open svg {
+    transform: rotate(-90deg);
+  }
+}
+
+/* Big screens */
+@media (min-width: 680px) {
+  main {
+    flex-flow: row nowrap;
+  }
+
+  .InputContainer {
+    width: 260px;
+  }
+
+  .InputContainerBox {
+    max-width: 0;
+  }
+
+  .InputContainerBox.open {
+    max-width: 260px;
+  }
+}
