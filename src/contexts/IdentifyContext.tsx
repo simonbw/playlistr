@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { identifyAudioBlob } from "../api";
 import { recordAudioBlob } from "../recordAudioBlob";
-import { useAudDToken } from "./AudDTokenProvider";
+import { useAudDSettings } from "./AudDSettingsProvider";
 import { usePlaylistContext } from "./SongsContext";
 import { useStreamContext } from "./StreamContext";
+import { useAudioContext, resumeIfPaused } from "./AudioContextContext";
 
 type Status = "recording" | "identifying" | "waiting" | "stopped";
 
@@ -25,8 +26,9 @@ export function useIdentifyContext() {
   return useContext(IdentifyContext);
 }
 
-export function IdentifyProvider({ children }) {
-  const { token } = useAudDToken();
+export const IdentifyProvider = React.memo(({ children }) => {
+  const audioContext = useAudioContext();
+  const { token } = useAudDSettings();
   const { source } = useStreamContext();
   const { addSong } = usePlaylistContext();
   const [status, setStatus] = useState<Status>("stopped");
@@ -61,6 +63,7 @@ export function IdentifyProvider({ children }) {
   }, [status]);
 
   function start() {
+    resumeIfPaused(audioContext);
     if (status === "stopped") {
       recordAndIdentify();
     }
@@ -88,4 +91,4 @@ export function IdentifyProvider({ children }) {
       {children}
     </IdentifyContext.Provider>
   );
-}
+});

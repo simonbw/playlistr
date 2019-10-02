@@ -2,15 +2,20 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { generateId, parseTimecode } from "../utils";
 
 export interface SongData {
+  randomId?: string;
+
   startedAt?: number;
   title?: string;
   album?: string;
   artist?: string;
   label?: string;
-  lyrics?: any;
   release_date?: string;
   timecode?: string;
-  randomId?: string;
+
+  lyrics?: any;
+  apple_music?: any;
+  spotify?: any;
+  deezer?: any;
 }
 
 interface ContextValue {
@@ -48,7 +53,7 @@ function loadSongs(): SongData[] {
   return JSON.parse(localStorage.getItem("songs") || "[]");
 }
 
-export function PlaylistProvider({ children }) {
+export const PlaylistProvider = React.memo(({ children }) => {
   const [songs, setSongs] = useState<SongData[]>(() => loadSongs());
 
   useEffect(() => {
@@ -82,4 +87,4 @@ export function PlaylistProvider({ children }) {
       {children}
     </PlaylistContext.Provider>
   );
-}
+});

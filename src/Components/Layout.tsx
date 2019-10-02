@@ -1,6 +1,6 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import AudDTokenAlerter from "./AudDTokenAlerter";
+import AudDSettingsDialog from "./AudDSettingsDialog";
 import ClearPlaylistButton from "./ClearPlaylistButton";
 import CsvButton from "./CsvButton";
 import HelpButton from "./HelpButton";
@@ -8,9 +8,7 @@ import Identifier from "./Identifier";
 import InputContainer from "./InputContainer";
 import Songs from "./Songs";
 
-interface Props {}
-
-export default function Layout(props: Props) {
+function Layout() {
   return (
     <Container maxWidth="md">
       <header
@@ -34,7 +32,7 @@ export default function Layout(props: Props) {
           <Songs />
           <div className="PlaylistActions">
             <CsvButton />
-            <AudDTokenAlerter />
+            <AudDSettingsDialog />
             <ClearPlaylistButton />
           </div>
         </div>
@@ -43,3 +41,5 @@ export default function Layout(props: Props) {
     </Container>
   );
 }
+
+export default React.memo(Layout);

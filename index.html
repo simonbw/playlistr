@@ -1,9 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <head><link rel="stylesheet" href="./css/index.css"></head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
   <body>
-    <div id="react-container"/>
+    <div id="react-container">
+      <style>
+        #preloader {
+          animation: spin 0.8s cubic-bezier(0.2, 0.1, 0.8, 0.9) infinite;
+          color: white;
+          display: block;
+          margin: auto;
+          position: absolute;
+          top: 20%;
+          left: 50%;
+        }
+        @keyframes spin {
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      <div id="preloader">
+        <svg
+          width="64"
+          height="64"
+          viewBox="0 0 38 38"
+          xmlns="http://www.w3.org/2000/svg"
+          stroke="#fff"
+        >
+          <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)" stroke-width="2">
+              <path d="M36 18c0-9.94-8.06-18-18-18" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
     <title>Playlistr</title>
   </body>
   <script src="./src/index.tsx"></script>

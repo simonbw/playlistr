@@ -17,7 +17,10 @@ export async function identifyAudioBlob(
   }
 
   const params = new URLSearchParams();
-  params.append("return", ["timecode", "spotify"].join(","));
+  params.append(
+    "return",
+    ["timecode", "lyrics", "apple_music", "deezer", "spotify"].join(",")
+  );
   if (apiToken) {
     params.append("api_token", apiToken);
   }

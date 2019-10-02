@@ -13,7 +13,7 @@ export function useStreamContext() {
   return useContext(StreamContext);
 }
 
-export function StreamProvider({ children }) {
+export const StreamProvider = React.memo(({ children }) => {
   const [mediaStream, setMediaStream] = useState<MediaStream | undefined>();
   const [source, setSource] = useState<
     MediaStreamAudioSourceNode | undefined
@@ -57,4 +57,4 @@ export function StreamProvider({ children }) {
       {children}
     </StreamContext.Provider>
   );
-}
+});

@@ -4,7 +4,7 @@ import TimelineIcon from "@material-ui/icons/TimelineRounded";
 import React, { useEffect, useState } from "react";
 import { useAudioContext } from "../contexts/AudioContextContext";
 import { useStreamContext } from "../contexts/StreamContext";
-import { useAnimationFrame } from "../useAnimationFrame";
+import { useAnimationFrame } from "../hooks/useAnimationFrame";
 
 interface Props {
   type: "time" | "frequency";

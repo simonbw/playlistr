@@ -1,11 +1,16 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useStreamContext } from "../contexts/StreamContext";
+import {
+  useAudioContext,
+  resumeIfPaused
+} from "../contexts/AudioContextContext";
 
 export default function DeviceSelect() {
   const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
   const [deviceId, setDeviceId] = useState("");
   const { selectDevice: onChange } = useStreamContext();
+  const audioContext = useAudioContext();
 
   async function loadDevices(shouldLoadLocal = false) {
     const userDevices = await navigator.mediaDevices.enumerateDevices();
@@ -50,7 +55,10 @@ export default function DeviceSelect() {
       <InputLabel shrink>Audio Source</InputLabel>
       <Select
         value={deviceId}
-        onChange={(e: any) => setDeviceId(e.target.value)}
+        onChange={(e: any) => {
+          setDeviceId(e.target.value);
+          resumeIfPaused(audioContext);
+        }}
         displayEmpty
         labelWidth={100}
       >

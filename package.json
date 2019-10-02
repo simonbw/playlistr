@@ -7,7 +7,9 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "now": "cd dist && now --name playlistr",
+    "now-alias": "now alias playlistr.simonbw.now.sh playlistr.simonbw.com"
   },
   "dependencies": {
     "@material-ui/core": "^4.0.0",
@@ -30,6 +32,7 @@
     "@types/react": "^16.9.3",
     "@types/react-dom": "^16.9.1",
     "babel-plugin-import": "^1.12.2",
+    "now-cli": "^0.0.0",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-bundle-visualiser": "^1.2.0",
     "typescript": "^3.6.3"
