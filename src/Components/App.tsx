@@ -7,20 +7,23 @@ import { PlaylistProvider } from "../contexts/SongsContext";
 import { StreamProvider } from "../contexts/StreamContext";
 import { theme } from "../theme";
 import Layout from "./Layout";
+import SimpleErrorBoundary from "./SimpleErrorBoundary";
 
 export default function App() {
   return (
-    <PlaylistProvider>
-      <StreamProvider>
-        <IdentifyProvider>
-          <ThemeProvider theme={theme}>
-            <AudDSettingsProvider>
-              <CssBaseline />
-              <Layout />
-            </AudDSettingsProvider>
-          </ThemeProvider>
-        </IdentifyProvider>
-      </StreamProvider>
-    </PlaylistProvider>
+    <SimpleErrorBoundary>
+      <PlaylistProvider>
+        <StreamProvider>
+          <IdentifyProvider>
+            <ThemeProvider theme={theme}>
+              <AudDSettingsProvider>
+                <CssBaseline />
+                <Layout />
+              </AudDSettingsProvider>
+            </ThemeProvider>
+          </IdentifyProvider>
+        </StreamProvider>
+      </PlaylistProvider>
+    </SimpleErrorBoundary>
   );
 }
