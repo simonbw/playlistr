@@ -4,11 +4,8 @@
   animation-name: animate-in;
   background: #fff;
   border-radius: 4px;
-  /* box-shadow: 1px 1px 5px #03a5; */
-  /* color: #034; */
   display: flex;
   margin-bottom: 8px;
-  /* opacity: 0.9; */
   overflow: hidden;
   padding: 10px;
   transition: opacity 0.2s ease;
@@ -24,26 +21,20 @@
   }
 }
 
-.Song:hover {
-  /* opacity: 1; */
-}
-
 .Song .StartedAt {
   letter-spacing: -1px;
   font-weight: lighter;
   padding-right: 8px;
+  width: 60px;
 }
 
 .Song .Title {
-  /* font-family: "Source Sans Pro", sans-serif; */
   display: block;
-  /* font-weight: bold; */
 }
 
 .Song .ArtistAndAlbum {
   font-size: 0.9rem;
   font-style: italic;
-  color: #457;
 }
 
 .LoadingSpinner {

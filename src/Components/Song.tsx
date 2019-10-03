@@ -1,4 +1,4 @@
-import { Paper } from "@material-ui/core";
+import { Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { SongData } from "../contexts/SongsContext";
 import { shortTime, longTime } from "../utils";
@@ -10,16 +10,27 @@ interface SongProps {
 export function Song({ song }: SongProps) {
   return (
     <Paper className="Song">
-      <div className="StartedAt" title={longTime(song.startedAt)}>
+      <Typography
+        className="StartedAt"
+        title={longTime(song.startedAt)}
+        color="textSecondary"
+        variant="body2"
+      >
         {shortTime(song.startedAt)}
-      </div>
+      </Typography>
       <div>
-        <span className="Title">{song.title}</span>
-        <div className="ArtistAndAlbum">
+        <Typography className="Title" color="textPrimary">
+          {song.title}
+        </Typography>
+        <Typography
+          className="ArtistAndAlbum"
+          variant="body2"
+          color="textSecondary"
+        >
           <span className="Artist">{song.artist}</span>
           {" — "}
           <span className="Album">{song.album}</span>
-        </div>
+        </Typography>
       </div>
     </Paper>
   );
