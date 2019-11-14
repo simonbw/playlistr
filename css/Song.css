@@ -28,6 +28,10 @@
   width: 60px;
 }
 
+.Song .SongInfo {
+  flex-grow: 1;
+}
+
 .Song .Title {
   display: block;
 }
@@ -35,6 +39,20 @@
 .Song .ArtistAndAlbum {
   font-size: 0.9rem;
   font-style: italic;
+}
+
+.Song .DeleteButton {
+  flex-grow: 0;
+  align-self: flex-start;
+  opacity: 0.1;
+  transition: opacity 0.2s ease;
+  position: relative;
+  top: -5px;
+  right: -5px;
+}
+
+.Song:hover .DeleteButton {
+  opacity: 1;
 }
 
 .LoadingSpinner {

@@ -1,48 +1,25 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { generateId, parseTimecode } from "../utils";
-
-export interface SongData {
-  randomId?: string;
-
-  startedAt?: number;
-  title?: string;
-  album?: string;
-  artist?: string;
-  label?: string;
-  release_date?: string;
-  timecode?: string;
-
-  lyrics?: any;
-  apple_music?: any;
-  spotify?: any;
-  deezer?: any;
-}
+import { SongData, songsAreEqual } from "../data/SongData";
 
 interface ContextValue {
   songs: readonly SongData[];
   addSong: (song: SongData, recordingStartTime?: number) => void;
   clearSongs: () => void;
+  deleteSong: (songId: string) => void;
+  updateSong: (newSong: SongData) => void;
 }
 
 const PlaylistContext = createContext<ContextValue>({
   songs: [],
   addSong: () => null,
-  clearSongs: () => null
+  clearSongs: () => null,
+  deleteSong: () => null,
+  updateSong: () => null
 });
 
-export function usePlaylistContext() {
+export function useSongsContext() {
   return useContext(PlaylistContext);
-}
-
-function songsAreEqual(songA?: SongData, songB?: SongData): boolean {
-  if (songA === undefined || songB === undefined) {
-    return false;
-  }
-  return (
-    songA.title === songB.title &&
-    songA.artist === songB.artist &&
-    songA.album === songB.album
-  );
 }
 
 function persistSongs(songs: SongData[]) {
@@ -81,6 +58,23 @@ export const PlaylistProvider = React.memo(({ children }) => {
         },
         clearSongs: () => {
           setSongs([]);
+        },
+        updateSong: newSong => {
+          console.log("updating song", newSong);
+          setSongs(songs =>
+            songs.map(song => {
+              if (song.randomId === newSong.randomId) {
+                return newSong;
+              } else {
+                return song;
+              }
+            })
+          );
+        },
+        deleteSong: songToDeleteId => {
+          setSongs(songs =>
+            songs.filter(song => song.randomId !== songToDeleteId)
+          );
         }
       }}
     >

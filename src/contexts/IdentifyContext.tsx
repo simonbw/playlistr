@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { identifyAudioBlob } from "../api";
 import { recordAudioBlob } from "../recordAudioBlob";
 import { useAudDSettings } from "./AudDSettingsProvider";
-import { usePlaylistContext } from "./SongsContext";
+import { useSongsContext } from "./SongsContext";
 import { useStreamContext } from "./StreamContext";
 import { useAudioContext, resumeIfPaused } from "./AudioContextContext";
 
@@ -30,7 +30,7 @@ export const IdentifyProvider = React.memo(({ children }) => {
   const audioContext = useAudioContext();
   const { token } = useAudDSettings();
   const { source } = useStreamContext();
-  const { addSong } = usePlaylistContext();
+  const { addSong } = useSongsContext();
   const [status, setStatus] = useState<Status>("stopped");
   const [waitTime] = useState(DEFAULT_WAIT_TIME);
 

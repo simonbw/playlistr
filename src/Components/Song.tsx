@@ -1,13 +1,17 @@
-import { Paper, Typography } from "@material-ui/core";
+import { IconButton, Paper, Typography } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/DeleteRounded";
 import React from "react";
-import { SongData } from "../contexts/SongsContext";
-import { shortTime, longTime } from "../utils";
+import { SongData } from "../data/SongData";
+import { longTime, shortTime } from "../utils";
+import EditableField from "./EditableField";
 
 interface SongProps {
   song: SongData;
+  onDelete: () => void;
+  onUpdate: (newSong: SongData) => void;
 }
 
-export function Song({ song }: SongProps) {
+export function Song({ song, onDelete, onUpdate }: SongProps) {
   return (
     <Paper className="Song">
       <Typography
@@ -18,20 +22,38 @@ export function Song({ song }: SongProps) {
       >
         {shortTime(song.startedAt)}
       </Typography>
-      <div>
+      <div className="SongInfo">
         <Typography className="Title" color="textPrimary">
-          {song.title}
+          <EditableField
+            value={song.title}
+            onChange={value => onUpdate({ ...song, title: value })}
+          />
         </Typography>
         <Typography
           className="ArtistAndAlbum"
           variant="body2"
           color="textSecondary"
         >
-          <span className="Artist">{song.artist}</span>
+          <EditableField
+            className="Artist"
+            value={song.artist}
+            onChange={value => onUpdate({ ...song, artist: value })}
+          />
           {" — "}
-          <span className="Album">{song.album}</span>
+          <EditableField
+            className="Album"
+            value={song.album}
+            onChange={value => onUpdate({ ...song, album: value })}
+          />
         </Typography>
       </div>
+      <IconButton onClick={onDelete} size="small" className="DeleteButton">
+        <CloseIcon />
+      </IconButton>
     </Paper>
   );
+}
+
+function EditableSong({ song }: SongProps) {
+  return;
 }

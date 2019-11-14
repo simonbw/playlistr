@@ -3,7 +3,8 @@ import BarChartIcon from "@material-ui/icons/BarChartRounded";
 import { ExportToCsv } from "export-to-csv";
 import moment from "moment";
 import React from "react";
-import { SongData, usePlaylistContext } from "../contexts/SongsContext";
+import { useSongsContext } from "../contexts/SongsContext";
+import { SongData } from "../data/SongData";
 
 function formatSongForCsv(song: SongData) {
   return {
@@ -27,7 +28,7 @@ function generatePlaylistCsv(songs: readonly SongData[]) {
 }
 
 export default function CsvButton() {
-  const { songs } = usePlaylistContext();
+  const { songs } = useSongsContext();
   return (
     <Button
       onClick={() => generatePlaylistCsv(songs)}

@@ -1,4 +1,4 @@
-import { SongData } from "./contexts/SongsContext";
+import { SongData } from "./data/SongData";
 import { msToTimecode } from "./utils";
 
 type ApiResponse =

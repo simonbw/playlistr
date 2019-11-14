@@ -31,7 +31,7 @@ function StartButton({ start, source }) {
       variant="outlined"
       style={{ color: "#fff", borderColor: "#fff" }}
     >
-      Start Listening
+      Start Identifying
     </Button>
   );
 }
@@ -47,7 +47,7 @@ function StopButton({ stop }) {
 function Listening() {
   return (
     <span style={{ letterSpacing: 4, userSelect: "none" }}>
-      Listening
+      Identifying
       <Ellipses interval={700} />
     </span>
   );

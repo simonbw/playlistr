@@ -1,15 +1,17 @@
 import React from "react";
-import { usePlaylistContext } from "../contexts/SongsContext";
+import { useSongsContext } from "../contexts/SongsContext";
 import { Song } from "./Song";
 
 export default function Songs() {
-  const { songs } = usePlaylistContext();
+  const { songs, deleteSong, updateSong } = useSongsContext();
   return (
     <div className="SongsContainer">
       {songs.map(song => (
         <Song
-          key={`${song.randomId}–${song.artist}—${song.album}`}
+          key={`${song.randomId}`}
           song={song}
+          onDelete={() => deleteSong(song.randomId)}
+          onUpdate={updateSong}
         />
       ))}
     </div>

@@ -89,6 +89,7 @@ function AudDSettingsDialogContent({
           <TextField
             autoFocus
             fullWidth
+            spellCheck={false}
             value={tokenValue}
             onChange={e => setTokenValue(e.target.value)}
           />
