@@ -38,7 +38,7 @@ function StartButton({ start, source }) {
 
 function StopButton({ stop }) {
   return (
-    <IconButton onClick={() => stop()} color="inherit" title="Stop listening">
+    <IconButton onClick={() => stop()} color="inherit" title="Stop identifying">
       <StopIcon />
     </IconButton>
   );

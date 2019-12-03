@@ -27,7 +27,7 @@ const AudDSettingsContext = createContext<AudDSettings>({
   setRecordingLength: () => null
 });
 
-export const AudDSettingsProvider = React.memo(({ children }) => {
+export const AudDSettingsProvider = ({ children }) => {
   const [settings, setSettings] = useState(() => {
     const loadedSettings = JSON.parse(
       localStorage.getItem(SETTINGS_KEY) || "{}"
@@ -58,7 +58,7 @@ export const AudDSettingsProvider = React.memo(({ children }) => {
       {children}
     </AudDSettingsContext.Provider>
   );
-});
+};
 
 export function useAudDSettings() {
   return useContext(AudDSettingsContext);

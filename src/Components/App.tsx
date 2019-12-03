@@ -12,18 +12,18 @@ import SimpleErrorBoundary from "./SimpleErrorBoundary";
 export default function App() {
   return (
     <SimpleErrorBoundary>
-      <PlaylistProvider>
-        <StreamProvider>
-          <IdentifyProvider>
-            <ThemeProvider theme={theme}>
-              <AudDSettingsProvider>
+      <AudDSettingsProvider>
+        <PlaylistProvider>
+          <StreamProvider>
+            <IdentifyProvider>
+              <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Layout />
-              </AudDSettingsProvider>
-            </ThemeProvider>
-          </IdentifyProvider>
-        </StreamProvider>
-      </PlaylistProvider>
+              </ThemeProvider>
+            </IdentifyProvider>
+          </StreamProvider>
+        </PlaylistProvider>
+      </AudDSettingsProvider>
     </SimpleErrorBoundary>
   );
 }

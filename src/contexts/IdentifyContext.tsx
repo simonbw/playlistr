@@ -5,6 +5,7 @@ import { useAudDSettings } from "./AudDSettingsProvider";
 import { useSongsContext } from "./SongsContext";
 import { useStreamContext } from "./StreamContext";
 import { useAudioContext, resumeIfPaused } from "./AudioContextContext";
+import { songIsUnknown } from "../data/SongData";
 
 type Status = "recording" | "identifying" | "waiting" | "stopped";
 
@@ -30,7 +31,7 @@ export const IdentifyProvider = React.memo(({ children }) => {
   const audioContext = useAudioContext();
   const { token } = useAudDSettings();
   const { source } = useStreamContext();
-  const { addSong } = useSongsContext();
+  const { addSong, addUnknownSong, songs } = useSongsContext();
   const [status, setStatus] = useState<Status>("stopped");
   const [waitTime] = useState(DEFAULT_WAIT_TIME);
 
@@ -47,9 +48,12 @@ export const IdentifyProvider = React.memo(({ children }) => {
       if (identityData) {
         addSong(identityData, recordingStartTime);
       } else {
-        console.log("song is null for some reason");
+        if (!songs[0] || !songIsUnknown(songs[0])) {
+          addUnknownSong();
+        }
       }
       setStatus("waiting");
+      console.log("waiting...");
     } catch (e) {
       console.error(e);
     }

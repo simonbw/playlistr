@@ -1,10 +1,22 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback
+} from "react";
 import { generateId, parseTimecode } from "../utils";
-import { SongData, songsAreEqual } from "../data/SongData";
+import {
+  SongData,
+  songsAreEqual,
+  songIsUnknown,
+  createUnknownSong
+} from "../data/SongData";
 
 interface ContextValue {
   songs: readonly SongData[];
   addSong: (song: SongData, recordingStartTime?: number) => void;
+  addUnknownSong: (index?: number) => void;
   clearSongs: () => void;
   deleteSong: (songId: string) => void;
   updateSong: (newSong: SongData) => void;
@@ -13,6 +25,7 @@ interface ContextValue {
 const PlaylistContext = createContext<ContextValue>({
   songs: [],
   addSong: () => null,
+  addUnknownSong: () => null,
   clearSongs: () => null,
   deleteSong: () => null,
   updateSong: () => null
@@ -41,6 +54,7 @@ export const PlaylistProvider = React.memo(({ children }) => {
     <PlaylistContext.Provider
       value={{
         songs,
+
         addSong: (song: SongData, recordingStartTime: number) => {
           setSongs(songs => {
             const newSongData: SongData = {
@@ -54,6 +68,15 @@ export const PlaylistProvider = React.memo(({ children }) => {
               console.log("Same song identified: " + song.title);
               return songs;
             }
+          });
+        },
+        addUnknownSong: (index = 0) => {
+          setSongs(songs => {
+            const newSong = createUnknownSong();
+            const newSongs = [...songs];
+            newSongs.splice(index, 0, newSong);
+            console.log("adding new song", newSong, newSongs);
+            return newSongs;
           });
         },
         clearSongs: () => {

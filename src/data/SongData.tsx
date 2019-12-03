@@ -1,3 +1,5 @@
+import { generateId } from "../utils";
+
 export interface SongData {
   // Our id
   randomId?: string;
@@ -28,3 +30,26 @@ export function songsAreEqual(songA?: SongData, songB?: SongData): boolean {
     songA.album === songB.album
   );
 }
+
+export function songIsUnknown(song: SongData): boolean {
+  return (
+    song.title === "UNKNOWN" &&
+    song.artist === "UNKNOWN" &&
+    song.album === "UNKNOWN"
+  );
+}
+
+export function createUnknownSong(): SongData {
+  return {
+    randomId: generateId(),
+    title: "UNKNOWN",
+    artist: "UNKNOWN",
+    album: "UNKNOWN",
+    startedAt: Date.now()
+  };
+}
+
+console.log(
+  "unknown create and identify works:",
+  songIsUnknown(createUnknownSong())
+);

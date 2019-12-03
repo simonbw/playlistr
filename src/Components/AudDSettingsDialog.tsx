@@ -141,20 +141,18 @@ function AudDSettingsDialogContent({
         </Box>
       </DialogContent>
       <DialogActions>
-        <Fade in={hasChangedValue}>
-          <Button
-            variant="outlined"
-            color="inherit"
-            onClick={() => {
-              setToken(tokenValue);
-              setWaitLength(waitLengthValue);
-              setRecordingLength(recordingLengthValue);
-              setOpen(false);
-            }}
-          >
-            Save
-          </Button>
-        </Fade>
+        <Button
+          variant={hasChangedValue ? "outlined" : "text"}
+          color="inherit"
+          onClick={() => {
+            setToken(tokenValue);
+            setWaitLength(waitLengthValue);
+            setRecordingLength(recordingLengthValue);
+            setOpen(false);
+          }}
+        >
+          Save
+        </Button>
         <Button
           onClick={() => {
             setOpen(false);

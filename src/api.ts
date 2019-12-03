@@ -12,7 +12,7 @@ export async function identifyAudioBlob(
   blob: Blob,
   apiToken?: string
 ): Promise<SongData | null> {
-  if (window.location.hostname === "localhost") {
+  if (shouldMockRequest()) {
     return mockApiRequest();
   }
 
@@ -23,6 +23,8 @@ export async function identifyAudioBlob(
   );
   if (apiToken) {
     params.append("api_token", apiToken);
+  } else {
+    console.log("making request with no api_token");
   }
   const url = "//api.audd.io?" + params;
   console.log("fetching", url);
@@ -41,7 +43,7 @@ export async function identifyAudioBlob(
     if (data.status === "success") {
       const song = data.result;
       if (song == null) {
-        console.error("song is null", data);
+        console.warn("song not recognized", data);
       }
       return song;
     } else {
@@ -53,21 +55,20 @@ export async function identifyAudioBlob(
   }
 }
 
-// TODO: This is hacky
-let START_TIME: number;
+function shouldMockRequest(): boolean {
+  return localStorage.getItem("SHOULD_MOCK_REQUEST") === "true";
+}
+
+let songNumber = 0;
 
 function mockApiRequest(): Promise<SongData> {
-  if (!START_TIME) {
-    START_TIME = Date.now();
-  }
+  songNumber += 1;
   console.log("mocking api");
 
   const now = Date.now();
 
   const songDuration = 1000 * 20;
-  const msSinceStart = now - START_TIME + 1;
-  const songNumber = Math.ceil(msSinceStart / songDuration);
-  const msIntoSong = msSinceStart % songDuration;
+  const msIntoSong = Math.random() * songDuration;
   const timecode = msToTimecode(msIntoSong);
   return new Promise(resolve => {
     setTimeout(() => {
