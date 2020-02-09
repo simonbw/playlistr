@@ -36,7 +36,6 @@ function AddSongButton({ index }: { index: number }) {
         src={insertIconUrl}
         style={{ height: 24, width: 24, stroke: "#FFF" }}
       />
-      {/* <ArrowLeftIcon /> */}
     </IconButton>
   );
 }
