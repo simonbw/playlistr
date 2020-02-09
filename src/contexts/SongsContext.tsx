@@ -14,11 +14,17 @@ import {
 } from "../data/SongData";
 
 interface ContextValue {
+  /** All of the songs currently */
   songs: readonly SongData[];
+  /** Add  */
   addSong: (song: SongData, recordingStartTime?: number) => void;
+  /** Creates a new empty song and adds it to songs at index. Defaults to 0. */
   addUnknownSong: (index?: number) => void;
+  /** Removes all songs  */
   clearSongs: () => void;
+  /** Removes a song with the given songId from songs */
   deleteSong: (songId: string) => void;
+  /** Replaces the song with the same ID with the new SongData */
   updateSong: (newSong: SongData) => void;
 }
 

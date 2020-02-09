@@ -87,3 +87,14 @@
     transform: rotate(360deg);
   }
 }
+
+.AddSongButton {
+  float: right;
+  position: relative;
+  top: -20px;
+  opacity: 0.4;
+}
+
+.AddSongButton:hover {
+  opacity: 1;
+}
