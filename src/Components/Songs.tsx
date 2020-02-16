@@ -18,6 +18,7 @@ export default function Songs() {
           />
         </Fragment>
       ))}
+      <AddSongButton index={songs.length} />
     </div>
   );
 }
