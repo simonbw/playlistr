@@ -1,0 +1,24 @@
+/* .AutoCompleteBox { */
+.AutosuggestBox {
+  max-height: 300px;
+  overflow: auto;
+  position: absolute;
+  top: calc(100% - 2px);
+  width: 300px;
+  z-index: 1000;
+}
+
+.AutosuggestList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.AutosuggestOption {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.AutosuggestOption--highlighted {
+  background-color: #0bf;
+}

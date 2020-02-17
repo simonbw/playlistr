@@ -32,24 +32,15 @@ export function songsAreEqual(songA?: SongData, songB?: SongData): boolean {
 }
 
 export function songIsUnknown(song: SongData): boolean {
-  return (
-    song.title === "UNKNOWN" &&
-    song.artist === "UNKNOWN" &&
-    song.album === "UNKNOWN"
-  );
+  return song.title === "" && song.artist === "" && song.album === "";
 }
 
 export function createUnknownSong(): SongData {
   return {
     randomId: generateId(),
-    title: "UNKNOWN",
-    artist: "UNKNOWN",
-    album: "UNKNOWN",
+    title: "",
+    artist: "",
+    album: "",
     startedAt: Date.now()
   };
 }
-
-console.log(
-  "unknown create and identify works:",
-  songIsUnknown(createUnknownSong())
-);

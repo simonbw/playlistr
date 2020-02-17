@@ -1,11 +1,11 @@
-import { Box, Collapse, Button, Grow, IconButton } from "@material-ui/core";
+import { Box, IconButton } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/KeyboardArrowRightRounded";
+import InputIcon from "@material-ui/icons/SettingsInputComponentRounded";
 import classNames from "classnames";
 import React, { useState } from "react";
 import Monitor from "../Monitor";
 import DeviceSelect from "./DeviceSelect";
 import Visualizer from "./Visualizer";
-import CloseIcon from "@material-ui/icons/KeyboardArrowRightRounded";
-import InputIcon from "@material-ui/icons/SettingsInputComponentRounded";
 
 export default function InputContainer() {
   const [open, setOpen] = useState(true);
@@ -16,7 +16,7 @@ export default function InputContainer() {
         className={classNames("OpenCloseButton", { open })}
         onClick={() => setOpen(!open)}
         size="small"
-        style={{ marginLeft: -30 }}
+        style={{ marginLeft: -30, color: "#fff" }}
         title={open ? "Close Input Panel" : "Open Input Panel"}
       >
         <CloseIcon className="CloseIcon" />

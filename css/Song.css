@@ -6,9 +6,8 @@
   border-radius: 4px;
   display: flex;
   margin-bottom: 8px;
-  overflow: hidden;
+  overflow: visible;
   padding: 10px;
-  transition: opacity 0.2s ease;
 }
 
 @keyframes animate-in {
@@ -22,14 +21,20 @@
 }
 
 .Song .StartedAt {
-  letter-spacing: -1px;
   font-weight: lighter;
+  letter-spacing: -1px;
   padding-right: 8px;
   width: 60px;
 }
 
-.Song .SongInfo {
+.Song .SongInfo,
+.Song .EditInfo {
   flex-grow: 1;
+}
+
+.Song .SongInfo .unknown {
+  font-style: italic;
+  color: #666;
 }
 
 .Song .Title {
@@ -41,51 +46,18 @@
   font-style: italic;
 }
 
-.Song .DeleteButton {
-  flex-grow: 0;
+.Song .CornerButton {
   align-self: flex-start;
+  flex-grow: 0;
   opacity: 0.1;
-  transition: opacity 0.2s ease;
   position: relative;
-  top: -5px;
   right: -5px;
+  top: -5px;
+  transition: opacity 0.2s ease;
 }
 
-.Song:hover .DeleteButton {
+.Song:hover .CornerButton {
   opacity: 1;
-}
-
-.LoadingSpinner {
-  margin: auto;
-  display: inline-block;
-  animation-name: spin;
-  animation-duration: 1600ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-.LoadingSpinner.clickable {
-  opacity: 0.7;
-  cursor: pointer;
-  animation-duration: 20000ms;
-  transform: opacity 0.1s ease;
-}
-
-.LoadingSpinner.clickable:hover {
-  opacity: 0.9;
-}
-
-.LoadingSpinner.clickable:active {
-  opacity: 1;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .AddSongButton {
@@ -97,4 +69,26 @@
 
 .AddSongButton:hover {
   opacity: 1;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.Song .EditInfo {
+  animation-duration: 0.2s;
+  animation-name: slide-down;
+}
+
+.Song .EditInfo .Buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.Song .EditInfo .Buttons > * {
+  margin-left: 4px;
 }

@@ -5,13 +5,12 @@ body {
 }
 
 h1 {
-  font-family: "Raleway", sans-serif;
-  /* border-bottom: 1px solid white; */
   color: #fff;
   filter: drop-shadow(1px 2px 5px #03a3);
+  font-family: "Raleway", sans-serif;
   font-size: 4em;
+  font-weight: lighter;
   letter-spacing: 12px;
   margin: 100px 0 0 0;
   padding-bottom: 0;
-  font-weight: lighter;
 }
